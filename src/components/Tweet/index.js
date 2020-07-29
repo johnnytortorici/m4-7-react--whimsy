@@ -7,12 +7,13 @@ import Header from "./Header";
 import ActionBar from "./ActionBar";
 
 const Tweet = () => {
-  const { tweetContents } = useContext(TweetContext);
+  const { tweetContents, date } = useContext(TweetContext);
 
   return (
     <Wrapper>
       <Header />
       <TweetContents>{tweetContents}</TweetContents>
+      <Timestamp>{date}</Timestamp>
       <Divider />
       <ActionBar />
       <Divider />
