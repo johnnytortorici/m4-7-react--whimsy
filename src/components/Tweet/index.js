@@ -4,16 +4,24 @@ import styled from "styled-components";
 import { TweetContext } from "../TweetContext";
 
 import Header from "./Header";
+import Stat from "./Stat";
 import ActionBar from "./ActionBar";
 
 const Tweet = () => {
-  const { tweetContents, date } = useContext(TweetContext);
+  const { tweetContents, date, numOfLikes, numOfRetweets } = useContext(
+    TweetContext
+  );
 
   return (
     <Wrapper>
       <Header />
       <TweetContents>{tweetContents}</TweetContents>
       <Timestamp>{date}</Timestamp>
+      <Divider />
+      <StatsBar>
+        <Stat num={numOfRetweets} label="Retweets" />
+        <Stat num={numOfLikes} label="Likes" />
+      </StatsBar>
       <Divider />
       <ActionBar />
       <Divider />
@@ -41,15 +49,15 @@ const Timestamp = styled.div`
   padding-bottom: 16px;
 `;
 
-const Divider = styled.div`
-  height: 1px;
-  background: rgb(230, 236, 240);
-`;
-
-const Stats = styled.div`
+const StatsBar = styled.div`
   display: flex;
   align-items: center;
   height: 48px;
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background: rgb(230, 236, 240);
 `;
 
 export default Tweet;
